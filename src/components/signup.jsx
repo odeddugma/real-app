@@ -3,6 +3,7 @@ import PageHeader from './common/pageHeader';
 import Joi from 'joi-browser';
 import Form from './common/form';
 
+
 class Signup extends Form {
     state = {
         data: { email: '', password: '', name: '' },
@@ -16,7 +17,7 @@ class Signup extends Form {
     };
 
     doSubmit = () => {
-        console.log('submit run');
+
     }
 
     render() {
