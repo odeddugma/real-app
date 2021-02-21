@@ -2,7 +2,9 @@ import React from 'react';
 import PageHeader from './common/pageHeader';
 import Joi from 'joi-browser';
 import Form from './common/form';
-
+import http from '../services/httpService';
+import { apiUrl } from '../config/config.json';
+import { toast } from "react-toastify";
 
 class Signup extends Form {
     state = {
@@ -16,7 +18,20 @@ class Signup extends Form {
         name: Joi.string().required().min(2).label('Name')
     };
 
-    doSubmit = () => {
+    doSubmit = async () => {
+        const data = { ...this.state.data };
+        data.biz = false;
+
+        try {
+            await http.post(`${apiUrl}/users`, data);
+            toast("User registered successfully", { position: "top-center" });
+            this.props.history.replace('/signin');
+
+        } catch (ex) {
+            if (ex.response && ex.response.status === 400) {
+                this.setState({ errors: { email: ex.response.data } });
+            }
+        }
 
     }
 
