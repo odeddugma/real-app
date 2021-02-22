@@ -1,9 +1,14 @@
 import React, { Component } from 'react';
-import { NavLink, Link } from 'react-router-dom';
+import { NavLink, Link } from "react-router-dom";
 
 class Navbar extends Component {
+
     state = {}
+
     render() {
+
+        const { user } = this.props;
+
         return (
             <nav className="navbar navbar-expand-lg navbar-light shadow-sm">
                 <div className="container">
@@ -17,21 +22,29 @@ class Navbar extends Component {
                                 <NavLink className="nav-link" to="/about">About</NavLink>
                             </li>
                             <li className="nav-item">
-                                <NavLink className="nav-link" to="my-cards">My Cards</NavLink>
+                                <NavLink className="nav-link" to="/my-cards">My Cards</NavLink>
                             </li>
                         </ul>
                         <ul className="navbar-nav ml-auto">
-                            <li className="nav-item">
-                                <NavLink className="nav-link" to="/signin">Sign In</NavLink>
-                            </li>
-                            <li className="nav-item">
-                                <NavLink className="nav-link" to="signup">Sign Up</NavLink>
-                            </li>
+                            {!user && (
+                                <React.Fragment>
+                                    <li className="nav-item">
+                                        <NavLink className="nav-link" to="/signin">Sign In</NavLink>
+                                    </li>
+                                    <li className="nav-item">
+                                        <NavLink className="nav-link" to="/signup">Sign Up</NavLink>
+                                    </li>
+                                </React.Fragment>
+                            )}
+                            {user && (
+                                <li className="nav-item">
+                                    <NavLink className="nav-link" to="/logout">Logout</NavLink>
+                                </li>
+                            )}
                         </ul>
                     </div>
                 </div>
-            </nav>
-        );
+            </nav>);
     }
 }
 

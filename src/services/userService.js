@@ -1,13 +1,26 @@
-import http from './httpService';
-import { apiUrl } from '../config/config.json';
+import http from "./httpService";
+import { apiUrl } from "../config/config.json";
+import jwtDecode from "jwt-decode";
 
-const tokenKey = 'token';
+const tokenKey = "token";
+
+export function getCurrentUser() {
+
+    try {
+        const jwt = localStorage.getItem(tokenKey);
+        return jwtDecode(jwt);
+    } catch (ex) {
+        return null;
+    }
+
+}
 
 export async function login(email, password) {
-    const { data } = await http.post(`${apiUrl}/auth`, { email: email, password: password }); // {email: email, password: password} = {email, password}
+    const { data } = await http.post(`${apiUrl}/auth`, { email, password });
     localStorage.setItem(tokenKey, data.token);
 }
 
 export default {
-    login
-}
+    login,
+    getCurrentUser
+};
