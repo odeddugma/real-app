@@ -5,7 +5,9 @@ import Footer from "./components/footer";
 import Home from "./components/home";
 import About from "./components/about";
 import Signup from "./components/signup";
+import BizSignup from "./components/biz-signup";
 import Signin from "./components/signin";
+import createCard from "./components/createCard";
 import Logout from "./components/logout";
 import { Switch, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
@@ -33,7 +35,9 @@ class App extends Component {
         </header>
         <main style={{ minHeight: 900 }}>
           <Switch>
+            <Route path="/createCard" component={createCard} />
             <Route path="/logout" component={Logout} />
+            <Route path="/biz-signup" component={BizSignup} />
             <Route path="/signin" component={Signin} />
             <Route path="/signup" component={Signup} />
             <Route path="/about" component={About} />

@@ -4,11 +4,10 @@ import Joi from 'joi-browser';
 import Form from './common/form';
 import http from '../services/httpService';
 import { apiUrl } from '../config/config.json';
-import { toast } from "react-toastify";
 import userService from "../services/userService";
 import { Redirect } from "react-router-dom";
 
-class Signup extends Form {
+class BizSignup extends Form {
     state = {
         data: { email: '', password: '', name: '' },
         errors: {}
@@ -22,12 +21,12 @@ class Signup extends Form {
 
     doSubmit = async () => {
         const data = { ...this.state.data };
-        data.biz = false;
+        data.biz = true;
 
         try {
             await http.post(`${apiUrl}/users`, data);
-            toast("User registered successfully", { position: "top-center" });
-            this.props.history.replace('/signin');
+            await userService.login(data.email, data.password);
+            window.location = '/createCard';
 
         } catch (ex) {
             if (ex.response && ex.response.status === 400) {
@@ -43,10 +42,10 @@ class Signup extends Form {
 
         return (
             <div className="container">
-                <PageHeader>Sign Up Page</PageHeader>
+                <PageHeader>Businss Sign Up Page</PageHeader>
                 <div className="row">
                     <div className="col-12 mt-4">
-                        <p>You can sign up for free</p>
+                        <p>Business sign up for free</p>
                     </div>
                 </div>
                 <div className="col-lg-6">
@@ -54,7 +53,7 @@ class Signup extends Form {
                         {this.renderInput('email', 'Email', 'email')}
                         {this.renderInput('password', 'Password', 'password')}
                         {this.renderInput('name', 'Name')}
-                        {this.renderButton('Sign up')}
+                        {this.renderButton('Next')}
                     </form>
                 </div>
             </div>
@@ -62,4 +61,4 @@ class Signup extends Form {
     }
 }
 
-export default Signup;
+export default BizSignup;

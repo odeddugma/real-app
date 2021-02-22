@@ -2,10 +2,8 @@ import React from 'react';
 import PageHeader from "./common/pageHeader";
 import Joi from "joi-browser";
 import Form from "./common/form";
-/* import http from "../services/httpService";
-import { apiUrl } from "../config/config.json";
-import { toast } from "react-toastify"; */
 import userService from "../services/userService";
+import { Redirect } from "react-router-dom";
 
 class Signin extends Form {
 
@@ -36,6 +34,9 @@ class Signin extends Form {
     }
 
     render() {
+
+        if (userService.getCurrentUser()) return <Redirect to="/" />
+
         return (
             <div className="container">
                 <PageHeader>Sign In Page</PageHeader>

@@ -21,9 +21,10 @@ class Navbar extends Component {
                             <li className="nav-item">
                                 <NavLink className="nav-link" to="/about">About</NavLink>
                             </li>
-                            <li className="nav-item">
+                            {user && <li className="nav-item">
                                 <NavLink className="nav-link" to="/my-cards">My Cards</NavLink>
                             </li>
+                            }
                         </ul>
                         <ul className="navbar-nav ml-auto">
                             {!user && (
@@ -33,6 +34,9 @@ class Navbar extends Component {
                                     </li>
                                     <li className="nav-item">
                                         <NavLink className="nav-link" to="/signup">Sign Up</NavLink>
+                                    </li>
+                                    <li className="nav-item">
+                                        <NavLink className="nav-link" to="/biz-signup">Business</NavLink>
                                     </li>
                                 </React.Fragment>
                             )}
