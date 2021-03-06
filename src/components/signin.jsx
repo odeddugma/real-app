@@ -19,17 +19,13 @@ class Signin extends Form {
 
     doSubmit = async () => {
         const { email, password } = this.state.data;
-
         try {
             await userService.login(email, password);
             window.location = '/';
-
         } catch (ex) {
-
             if (ex.response && ex.response.status === 400) {
                 this.setState({ errors: { email: ex.response.data } });
             }
-
         }
     }
 
