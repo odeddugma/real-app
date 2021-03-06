@@ -21,9 +21,16 @@ class Navbar extends Component {
                             <li className="nav-item">
                                 <NavLink className="nav-link" to="/about">About</NavLink>
                             </li>
-                            {user && <li className="nav-item">
-                                <NavLink className="nav-link" to="/my-cards">My Cards</NavLink>
-                            </li>
+                            {user && (
+                                <React.Fragment>
+                                    <li className="nav-item">
+                                        <NavLink className="nav-link" to="/my-cards">My Cards</NavLink>
+                                    </li>
+                                    <li className="nav-item">
+                                        <NavLink className="nav-link" to="/create-card">Create Card</NavLink>
+                                    </li>
+                                </React.Fragment>
+                            )
                             }
                         </ul>
                         <ul className="navbar-nav ml-auto">

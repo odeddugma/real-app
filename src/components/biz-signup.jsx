@@ -4,8 +4,9 @@ import Joi from 'joi-browser';
 import Form from './common/form';
 import http from '../services/httpService';
 import { apiUrl } from '../config/config.json';
-import userService from "../services/userService";
+import { toast } from "react-toastify";
 import { Redirect } from "react-router-dom";
+import userService from "../services/userService";
 
 class BizSignup extends Form {
     state = {
@@ -26,7 +27,7 @@ class BizSignup extends Form {
         try {
             await http.post(`${apiUrl}/users`, data);
             await userService.login(data.email, data.password);
-            window.location = '/createCard';
+            window.location = '/create-card';
 
         } catch (ex) {
             if (ex.response && ex.response.status === 400) {
@@ -45,7 +46,7 @@ class BizSignup extends Form {
                 <PageHeader>Businss Sign Up Page</PageHeader>
                 <div className="row">
                     <div className="col-12 mt-4">
-                        <p>Business sign up for free</p>
+                        <p>Signup for free and create your own Cards</p>
                     </div>
                 </div>
                 <div className="col-lg-6">

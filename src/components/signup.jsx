@@ -5,8 +5,8 @@ import Form from './common/form';
 import http from '../services/httpService';
 import { apiUrl } from '../config/config.json';
 import { toast } from "react-toastify";
-import userService from "../services/userService";
 import { Redirect } from "react-router-dom";
+import userService from "../services/userService";
 
 class Signup extends Form {
     state = {
