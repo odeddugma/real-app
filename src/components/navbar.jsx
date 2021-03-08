@@ -21,7 +21,7 @@ class Navbar extends Component {
                             <li className="nav-item">
                                 <NavLink className="nav-link" to="/about">About</NavLink>
                             </li>
-                            {user && (
+                            {user && user.biz && (
                                 <React.Fragment>
                                     <li className="nav-item">
                                         <NavLink className="nav-link" to="/my-cards">My Cards</NavLink>

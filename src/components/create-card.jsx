@@ -4,6 +4,7 @@ import Joi from "joi-browser";
 import Form from "./common/form";
 import cardService from "../services/cardService";
 import { toast } from "react-toastify";
+import { Link } from "react-router-dom";
 
 class CreateCard extends Form {
     state = {
@@ -68,6 +69,7 @@ class CreateCard extends Form {
                             {this.renderInput("bizPhone", "Business Phone")}
                             {this.renderInput("bizImage", "Business Image")}
                             {this.renderButton("Create Card")}
+                            <Link className="btn btn-primary ml-2" to="/my-cards">Not Now</Link>
                         </form>
                     </div>
                 </div>
