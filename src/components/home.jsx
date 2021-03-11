@@ -10,7 +10,8 @@ class Home extends Component {
                 <PageHeader>Real App Home Page</PageHeader>
                 <div className="row">
                     <div className="col-12 mt-4">
-                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reiciendis, doloremque.</p>
+                    <p>This is Home Page</p>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reiciendis, doloremque.</p>
                     </div>
                 </div>
             </div>

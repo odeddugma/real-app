@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 
 const Card = ({ card }) => {
     return (
@@ -18,6 +19,12 @@ const Card = ({ card }) => {
                         {card.bizPhone}
                         <br />
                         {card.bizAddress}
+                    </p>
+                    <p>
+                    <Link to={`/my-cards/edit/${card._id}`}>
+                    <i className="fas fa-edit mr-1"></i>
+                    Edit Card
+                    </Link>
                     </p>
                 </div>
             </div>

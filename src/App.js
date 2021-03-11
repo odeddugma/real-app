@@ -9,6 +9,7 @@ import BizSignup from "./components/biz-signup";
 import Signin from "./components/signin";
 import MyCards from "./components/my-cards";
 import CreateCard from "./components/create-card";
+import EditCard from "./components/edit-card";
 import Logout from "./components/logout";
 import { Switch, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
@@ -37,6 +38,7 @@ class App extends Component {
         </header>
         <main style={{ minHeight: 900 }}>
           <Switch>
+          <ProtectedRoute path="/my-cards/edit/:id" component={EditCard} biz={true} />
             <ProtectedRoute path="/create-card" component={CreateCard} biz={true} />
             <ProtectedRoute path="/my-cards" component={MyCards} biz={true} />
             <Route path="/biz-signup" component={BizSignup} />
