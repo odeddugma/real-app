@@ -3,8 +3,8 @@ import PageHeader from "./common/pageHeader";
 import Joi from "joi-browser";
 import Form from "./common/form";
 import cardService from "../services/cardService";
-/* import { toast } from "react-toastify";
- */import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
+import { Link } from "react-router-dom";
 
 class EditCard extends Form {
     state = {
@@ -44,13 +44,13 @@ class EditCard extends Form {
             .allow("")
     };
 
-    async componentDidMount(){
+    async componentDidMount() {
         const cardId = this.props.match.params.id;
-        const {data} = await cardService.getCard(cardId);
-        this.setState({data: this.mapToViewModel(data)});
+        const { data } = await cardService.getCard(cardId);
+        this.setState({ data: this.mapToViewModel(data) });
     }
 
-    mapToViewModel(card){
+    mapToViewModel(card) {
         return {
             bizName: card.bizName,
             bizDescription: card.bizDescription,
@@ -58,11 +58,14 @@ class EditCard extends Form {
             bizPhone: card.bizPhone,
             bizImage: card.bizImage,
             _id: card._id
-            }
+        }
     }
 
     doSubmit = async () => {
-        
+        const { data } = this.state;
+        await cardService.editCard(data);
+        toast('Card is updated', { position: "top-center" });
+        this.props.history.replace('/my-cards');
     };
 
     render() {
