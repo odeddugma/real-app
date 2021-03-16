@@ -1,11 +1,15 @@
 import http from "./httpService";
 import { apiUrl } from "../config/config.json";
 
-export function getCard(cardId){
+export function deleteCard(cardId) {
+    return http.delete(`${apiUrl}/cards/${cardId}`)
+}
+
+export function getCard(cardId) {
     return http.get(`${apiUrl}/cards/${cardId}`)
 }
 
-export function editCard(card){
+export function editCard(card) {
     const cardId = card._id;
     delete card._id;
     return http.put(`${apiUrl}/cards/${cardId}`, card);
@@ -23,7 +27,8 @@ const cardMethods = {
     createCard,
     getMyCards,
     getCard,
-    editCard
+    editCard,
+    deleteCard
 };
 
 export default cardMethods;
